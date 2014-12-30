@@ -1,4 +1,4 @@
 GodOfMen
 ========
 
-a clone of an old fun game
+inspired by an old fun game
