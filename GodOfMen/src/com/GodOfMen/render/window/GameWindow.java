@@ -22,14 +22,15 @@ public class GameWindow extends JFrame{
 	/**
 	 * Constructs a new GameWindow Object and sets it visible.
 	 */
-	public GameWindow(){
+	public GameWindow(String title){
 		super();
 		this.windowListener = new GameWindowListener();
-		this.canvas = new GameCanvas();
 		Dimension screenDimension = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setSize(screenDimension);
+		this.canvas = new GameCanvas(this);
 		this.add(canvas);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setTitle(title);
 		this.setVisible(true);
 		this.createBufferStrategy(3);
 	}
