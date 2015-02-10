@@ -1,19 +1,23 @@
 package com.GodOfMen.render.drawable;
 
-import java.awt.Image;
+import java.awt.image.BufferedImage;
 
 import com.GodOfMen.mathUtil.Vector2D;
 
 public abstract class RenderObject implements Renderable, Clickable{
 	
-	private Vector2D center;
-	private double width;
-	private double height;
 	/**
-	 * The Layer this RenderObject should be drawn on
+	 * The Center of this RenderObject in units of meters
+	 */
+	private Vector2D center;
+	private double width; //units of meters
+	private double height;//units of meters
+	/**
+	 * The Layer this RenderObject should be drawn on, 
+	 * higher numbers indicated this RenderObject will be closer to the bottom.
 	 */
 	private int layer;
-	private Image texture;
+	private BufferedImage texture;
 	
 	
 	/**
@@ -24,12 +28,13 @@ public abstract class RenderObject implements Renderable, Clickable{
 	 * @param layer the layer this RenderObject will be drawn onto
 	 * @param texture the Image that will be Rendered as this RenderObject
 	 */
-	public RenderObject(Vector2D center, double width, double height, int layer, Image texture){
+	public RenderObject(Vector2D center, double width, double height, int layer, BufferedImage texture){
 		this.center = center;
 		this.width = width;
 		this.height = height;
 		this.layer = layer;
 	}
+	
 	
 	
 	/**
@@ -46,6 +51,17 @@ public abstract class RenderObject implements Renderable, Clickable{
 	 * @return a Vector2D object representing the top left corner of this RenderObject
 	 */
 	public Vector2D getTopLeft(){
+		double x = center.getIHat() - width  / 2;
+		double y = center.getJHat() - height / 2;
+		return new Vector2D(x, y);
+	}
+	
+	
+	/**
+	 * 
+	 * @return a Vector2D object representing the top left corner of this RenderObject
+	 */
+	public Vector2D getBottomRight(){
 		double x = center.getIHat() + width  / 2;
 		double y = center.getJHat() + height / 2;
 		return new Vector2D(x, y);
@@ -54,9 +70,9 @@ public abstract class RenderObject implements Renderable, Clickable{
 	
 	/**
 	 * 
-	 * @return the Image object which will be drawn as this RenderObject
+	 * @return the BufferedImage object which will be drawn as this RenderObject
 	 */
-	public Image getImage(){
+	public BufferedImage getImage(){
 		return this.texture;
 	}
 	

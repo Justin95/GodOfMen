@@ -1,5 +1,6 @@
 package com.GodOfMen.game.main;
 
+import com.GodOfMen.render.drawing.Camera;
 import com.GodOfMen.render.drawing.Renderer;
 import com.GodOfMen.render.window.GameWindow;
 
@@ -13,11 +14,13 @@ public class Game {
 	private Renderer render;
 	private GameWindow window;
 	private boolean keepRunning;
+	private Camera camera;
 	
 	
 	private Game(){
-		this.window = new GameWindow();
-		this.render = new Renderer(window);
+		this.camera = new Camera(0,0);
+		this.window = new GameWindow("God of Men");
+		this.render = new Renderer(window, camera);
 	}
 	
 	
