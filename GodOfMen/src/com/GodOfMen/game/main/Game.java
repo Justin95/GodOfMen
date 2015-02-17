@@ -1,5 +1,8 @@
 package com.GodOfMen.game.main;
 
+import com.GodOfMen.assets.Texture;
+import com.GodOfMen.mathUtil.Vector2D;
+import com.GodOfMen.render.drawable.RenderObject;
 import com.GodOfMen.render.drawing.Camera;
 import com.GodOfMen.render.drawing.Renderer;
 import com.GodOfMen.render.window.GameWindow;
@@ -38,6 +41,9 @@ public class Game {
 	 * The main game loop
 	 */
 	private void loop(){
+		Texture t = Texture.TEST_TEXTURE;
+		RenderObject r = new RenderObject(new Vector2D(-10,-100),500,500,2,t);
+		render.addToRenderList(r);
 		while(keepRunning){
 			if(window.isClosed()) keepRunning = false;
 			

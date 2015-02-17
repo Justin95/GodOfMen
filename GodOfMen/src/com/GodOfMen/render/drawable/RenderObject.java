@@ -2,9 +2,10 @@ package com.GodOfMen.render.drawable;
 
 import java.awt.image.BufferedImage;
 
+import com.GodOfMen.assets.Texture;
 import com.GodOfMen.mathUtil.Vector2D;
 
-public abstract class RenderObject implements Renderable, Clickable{
+public class RenderObject implements Renderable{
 	
 	/**
 	 * The Center of this RenderObject in units of meters
@@ -17,7 +18,7 @@ public abstract class RenderObject implements Renderable, Clickable{
 	 * higher numbers indicated this RenderObject will be closer to the bottom.
 	 */
 	private int layer;
-	private BufferedImage texture;
+	private Texture texture;
 	
 	
 	/**
@@ -28,7 +29,8 @@ public abstract class RenderObject implements Renderable, Clickable{
 	 * @param layer the layer this RenderObject will be drawn onto
 	 * @param texture the Image that will be Rendered as this RenderObject
 	 */
-	public RenderObject(Vector2D center, double width, double height, int layer, BufferedImage texture){
+	public RenderObject(Vector2D center, double width, double height, int layer, Texture texture){
+		this.texture = texture;
 		this.center = center;
 		this.width = width;
 		this.height = height;
@@ -73,7 +75,7 @@ public abstract class RenderObject implements Renderable, Clickable{
 	 * @return the BufferedImage object which will be drawn as this RenderObject
 	 */
 	public BufferedImage getImage(){
-		return this.texture;
+		return this.texture.getImage();
 	}
 	
 	
@@ -84,7 +86,6 @@ public abstract class RenderObject implements Renderable, Clickable{
 	public int getLayer(){
 		return this.layer;
 	}
-	
 	
 	
 }
